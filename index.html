@@ -7,7 +7,6 @@
 <html ng-app="app1">
    <head>
       <link rel="stylesheet" href="styles/namelist.css">
-      <link rel="stylesheet" href="styles/general.css">
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
       <title>Student reports generator</title>
@@ -25,37 +24,20 @@
             The view is the div element and all that it contains. The $scope
             component is used to provide data to the view. -->
          <div ng-controller="ctrl1">
+
             <div class="col-lg-4 col-md-4 col-sm-6">
+				<h3>Your students</h3>
+			<div class="panel panel-default">
                <ul class="namelist">
                   <li ng-repeat = "name in names">
                      {{name.fName}} {{name.lName}}
                   </li>
                </ul>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6">
-               <h3>Paste in a list of your student's names</h3>
-               <textarea name="textArea" id="textArea" cols="30" rows="10"  ng-model="textAreaContent" placeholder="One name on each line"></textarea><br>
-               <button ng-click="parseNames()" class="btn btn-primary">Add all</button>
-               <h3>Or add them individually</h3>
+		   	</div>
+		   </div>
 
-               <form  ng-repeat="itemToAdd in itemsToAdd">
-                  <div class="form-group row">
-                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="fName" placeholder="First name" ng-model="itemToAdd.fName">
-                     </div>
-                  </div>
-                  <div class="form-group row">
-                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="lName" placeholder="Last name" ng-model="itemToAdd.lName">
-                     </div>
-                  </div>
-                  <div class="form-group row">
-                     <div class="offset-sm-2 col-sm-10">
-                        <button type="submit" class="btn btn-primary" ng-click="add(itemToAdd)">Add</button>
-                     </div>
-                  </div>
-               </form>
-            </div>
+			<!-- Load import form from separate file -->
+            <ng-include src="'fragments/import.html'"></ng-include>
          </div>
       </div>
       <!-- Load the AngularJS library -->
