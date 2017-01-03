@@ -40,6 +40,8 @@ app1.controller('ctrl1', function ($scope) {
 	$scope.parseNames = function () {
 
 		var separated = $scope.textAreaContent.split(/\r?\n/);
+		//var separated = document.getElementById("textArea").value.split(/\r?\n/);
+		console.log(separated);
 
 		for (n in separated) {
 			let split = separated[n].split(' ');
