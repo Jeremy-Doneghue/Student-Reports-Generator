@@ -1,0 +1,66 @@
+<!doctype html>
+<!-- Define the ng-app parameter in the root element so AngularJS
+   knows where to begin compiling. app1 is the module name and is referenced
+   in the JS file we will create -->
+<!-- ng-init is a directive that initializes application data by assigning
+   variable values -->
+<html ng-app="app1">
+   <head>
+      <link rel="stylesheet" href="styles/namelist.css">
+      <link rel="stylesheet" href="styles/general.css">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <title>Student reports generator</title>
+   </head>
+   <body>
+      <div class="container">
+         <div class="page-header">
+            <h1>Student reports generator</h1>
+         </div>
+         <div class="jumbotron">
+            <h2>Import class list</h2>
+            <p>Import the names of your students by pasting in a list or entering them using the form.</p>
+         </div>
+         <!-- Adds a controller that the Angular module will control.
+            The view is the div element and all that it contains. The $scope
+            component is used to provide data to the view. -->
+         <div ng-controller="ctrl1">
+            <div class="col-lg-4 col-md-4 col-sm-6">
+               <ul class="namelist">
+                  <li ng-repeat = "name in names">
+                     {{name.fName}} {{name.lName}}
+                  </li>
+               </ul>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+               <h3>Paste in a list of your student's names</h3>
+               <textarea name="textArea" id="textArea" cols="30" rows="10"  ng-model="textAreaContent" placeholder="One name on each line"></textarea><br>
+               <button ng-click="parseNames()" class="btn btn-primary">Add all</button>
+               <h3>Or add them individually</h3>
+
+               <form  ng-repeat="itemToAdd in itemsToAdd">
+                  <div class="form-group row">
+                     <div class="col-sm-10">
+                        <input type="text" class="form-control" id="fName" placeholder="First name" ng-model="itemToAdd.fName">
+                     </div>
+                  </div>
+                  <div class="form-group row">
+                     <div class="col-sm-10">
+                        <input type="text" class="form-control" id="lName" placeholder="Last name" ng-model="itemToAdd.lName">
+                     </div>
+                  </div>
+                  <div class="form-group row">
+                     <div class="offset-sm-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary" ng-click="add(itemToAdd)">Add</button>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+      <!-- Load the AngularJS library -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+      <!-- Load the JS Module -->
+      <script src="js/exam1.js"></script>
+   </body>
+</html>
