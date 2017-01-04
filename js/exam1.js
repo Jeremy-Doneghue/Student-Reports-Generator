@@ -26,21 +26,15 @@ Many services are provided for common tasks like using AJAX techniques to dynami
 // HTML normally have a name that contains app.
 var app1 = angular.module('app1', []);
 
-// Define the Controller and implement the Scope which links HTML
-// elements to variables in the Scope. It receives the controller
-// name and a factory function which gets the controller ready to use
-// We are saying that $scope is a dependency and that we want Angular
-// to pass in the $scope object when the function is called. This is
-// an example of dependency injection. Angular sees that my factory
-// function contains the $scope component and then it gets it and passes
-// it to the function automatically.
-app1.controller('ctrl1', function ($scope) {
+
+// Student import controller
+app1.controller('studentsController', function ($scope) {
 
 	$scope.textAreaContent = "";
-	$scope.parseNames = function () {
 
+	$scope.parseNames = function () {
+		$scope.textAreaContent = document.getElementById("textArea").value;
 		var separated = $scope.textAreaContent.split(/\r?\n/);
-		//var separated = document.getElementById("textArea").value.split(/\r?\n/);
 		console.log(separated);
 
 		for (n in separated) {
@@ -52,7 +46,8 @@ app1.controller('ctrl1', function ($scope) {
 		}
 		//Clear the box
 		document.getElementById("textArea").value = "";
-	}
+		$scope.textAreaContent = "";
+	};
 
 	$scope.names = [
 		  {fName: "Tim", lName: "Taylor"},
@@ -77,5 +72,31 @@ app1.controller('ctrl1', function ($scope) {
 			lName: ""
 		})
 	};
+});
 
+
+// View controller
+app1.controller('viewController', function ($scope) {
+
+	$scope.views = [
+		{
+			src: 'fragments/import.html',
+			jTitle: 'Import class list',
+			jDescription: 'Import the names of your students by pasting in a list or entering them using the form.'
+		},
+		{
+			src: 'fragments/frag2.html',
+			jTitle: 'Test view',
+			jDescription: 'Lorem ipsum dolor sit amet.'
+		}
+	];
+
+	$scope.currentView = 0;
+
+	$scope.switchView = function () {
+		if ($scope.currentView == 0) {
+			$scope.currentView = 1;
+		}
+		else $scope.currentView = 0;
+	}
 });

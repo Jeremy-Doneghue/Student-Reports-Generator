@@ -16,29 +16,44 @@
          <div class="page-header">
             <h1>Student reports generator</h1>
          </div>
-         <div class="jumbotron">
-            <h2>Import class list</h2>
-            <p>Import the names of your students by pasting in a list or entering them using the form.</p>
-         </div>
+
+		<!-- VIEW CONTROLLER -->
+		<div ng-controller="viewController">
+
+			<div class="jumbotron">
+               <h2>{{views[currentView].jTitle}}</h2>
+               <p>{{views[currentView].jDescription}}</p>
+            </div>
+
+			<div ng-controller="studentsController">
+
+				<!-- CLASS LIST -->
+			   <div class="col-lg-4 col-md-4 col-sm-6">
+				   <h3>Your students</h3>
+			   <div class="panel panel-default">
+				  <ul class="namelist">
+					 <li ng-repeat = "name in names">
+						{{name.fName}} {{name.lName}}
+					 </li>
+				  </ul>
+			   </div>
+			  </div>
+
+			   <!-- Load import form from separate file -->
+			   <ng-include ng-if="currentView == 0" src="'fragments/import.html'"></ng-include>
+			   <ng-include ng-if="currentView == 1" src="'fragments/frag2.html'"></ng-include>
+			   <span>{{"current view: " + currentView}}</span>
+			</div>
+
+			<button ng-click="switchView()">Change view</button>
+
+		</div>
+
+
          <!-- Adds a controller that the Angular module will control.
             The view is the div element and all that it contains. The $scope
             component is used to provide data to the view. -->
-         <div ng-controller="ctrl1">
 
-            <div class="col-lg-4 col-md-4 col-sm-6">
-				<h3>Your students</h3>
-			<div class="panel panel-default">
-               <ul class="namelist">
-                  <li ng-repeat = "name in names">
-                     {{name.fName}} {{name.lName}}
-                  </li>
-               </ul>
-		   	</div>
-		   </div>
-
-			<!-- Load import form from separate file -->
-            <ng-include src="'fragments/import.html'"></ng-include>
-         </div>
       </div>
       <!-- Load the AngularJS library -->
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
