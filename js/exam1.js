@@ -38,7 +38,7 @@ app1.controller('studentsController', function ($scope) {
 		console.log(separated);
 
 		for (n in separated) {
-			let split = separated[n].split(' ');
+			var split = separated[n].split(' ');
 			$scope.names.push({
 				fName: split[0],
 				lName: split[1]
@@ -74,6 +74,37 @@ app1.controller('studentsController', function ($scope) {
 	};
 });
 
+app1.controller('templateController', function ($scope) {
+
+	$scope.myTemplate;
+
+	$scope.template = function(name) {
+
+		this.tName = name;
+		this.aspects = [];
+
+		/*
+		 * aspectName - String: Name of aspect eg. Attendence
+		 * comments - [[adjective, comment]]:  2D array of comments with an adjective attached.
+		 *		eg. ['Poor', 'Numerous absences have contributed to a lack of work and engagement with the subject.']
+		 */
+		this.addAspect = function addAspect(name, comments) {
+
+			var aspect = function(name, comments) {
+				this.aName = name;
+				this.comments = comments;
+			}
+			this.aspects.push(new aspect(name, comments));
+		};
+	};
+
+	$scope.create = function() {
+		$scope.myTemplate = new $scope.template('test');
+		$scope.myTemplate.addAspect('Attendence', [['Good', 'Well done m8'], ['Shit', 'By crikey!']]);
+		console.log($scope.myTemplate.tName);
+		console.log($scope.myTemplate.aspects[0]);
+	};
+});
 
 // View controller
 app1.controller('viewController', function ($scope) {

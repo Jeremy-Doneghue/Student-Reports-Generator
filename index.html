@@ -43,9 +43,16 @@
 			   <ng-include ng-if="currentView == 0" src="'fragments/import.html'"></ng-include>
 			   <ng-include ng-if="currentView == 1" src="'fragments/frag2.html'"></ng-include>
 			   <span>{{"current view: " + currentView}}</span>
+
+			   <div ng-controller="templateController">
+   					<button ng-click="create()">Test</button>
+   				</div>
+				
 			</div>
 
 			<button ng-click="switchView()">Change view</button>
+
+
 
 		</div>
 
