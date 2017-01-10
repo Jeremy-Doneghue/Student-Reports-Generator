@@ -1,9 +1,4 @@
 <!doctype html>
-<!-- Define the ng-app parameter in the root element so AngularJS
-   knows where to begin compiling. app1 is the module name and is referenced
-   in the JS file we will create -->
-<!-- ng-init is a directive that initializes application data by assigning
-   variable values -->
 <html ng-app="app1">
    <head>
       <link rel="stylesheet" href="styles/namelist.css">
@@ -41,18 +36,12 @@
 
 			   <!-- Load import form from separate file -->
 			   <ng-include ng-if="currentView == 0" src="'fragments/import.html'"></ng-include>
-			   <ng-include ng-if="currentView == 1" src="'fragments/frag2.html'"></ng-include>
-			   <span>{{"current view: " + currentView}}</span>
-
-			   <div ng-controller="templateController">
-   					<button ng-click="create()">Test</button>
-   				</div>
-				
+			   <ng-include ng-if="currentView == 1" src="'fragments/template.html'"></ng-include>
 			</div>
 
+			<span>{{"current view: " + views[currentView].jTitle}}</span>
 			<button ng-click="switchView()">Change view</button>
-
-
+			<button onclick="location.reload(true)">Reload page</button>
 
 		</div>
 

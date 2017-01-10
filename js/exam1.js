@@ -76,38 +76,42 @@ app1.controller('studentsController', function ($scope) {
 
 app1.controller('templateController', function ($scope) {
 
-	$scope.myTemplate;
+	$scope.template = {
 
-	$scope.template = function(name) {
-
-		this.tName = name;
-		this.aspects = [];
-
-		/*
-		 * aspectName - String: Name of aspect eg. Attendence
-		 * comments - [[adjective, comment]]:  2D array of comments with an adjective attached.
-		 *		eg. ['Poor', 'Numerous absences have contributed to a lack of work and engagement with the subject.']
-		 */
-		this.addAspect = function addAspect(name, comments) {
-
-			var aspect = function(name, comments) {
-				this.aName = name;
-				this.comments = comments;
-			}
-			this.aspects.push(new aspect(name, comments));
-		};
+		tName: '',
+		aspects: [],
 	};
 
+	/*
+	 * aspectName - String: Name of aspect eg. Attendence
+	 * comments - [[adjective, comment]]:  2D array of comments with an adjective attached.
+	 *		eg. ['Poor', 'Numerous absences have contributed to a lack of work and engagement with the subject.']
+	 */
+	$scope.createAspect = function(name, comments) {
+		var aspect = function(name, comments) {
+			this.aName = name;
+			this.comments = comments;
+		}
+		return(new aspect(name, comments));
+	}
+
 	$scope.create = function() {
-		$scope.myTemplate = new $scope.template('test');
-		$scope.myTemplate.addAspect('Attendence', [['Good', 'Well done m8'], ['Shit', 'By crikey!']]);
-		console.log($scope.myTemplate.tName);
-		console.log($scope.myTemplate.aspects[0]);
+		$scope.template.aspects.push($scope.createAspect('Attendence', [['Good', 'Good attendance'], ['Shit', 'Poor attendance']]));
+		$scope.template.aspects.push($scope.createAspect('Homework', [['Good', 'Well done with homework'], ['Shit', 'Poor homework']]));
+
+		for (a in $scope.template.aspects){
+			console.log($scope.template.aspects[a].aName);
+		}
+	};
+
+	$scope.currentAspect = 1;
+	$scope.changeAspect = function(index) {
+			$scope.currentAspect = index;	
 	};
 });
 
 // View controller
-app1.controller('viewController', function ($scope) {
+app1.controller('viewController', function ($scope, $sce) {
 
 	$scope.views = [
 		{
@@ -116,9 +120,9 @@ app1.controller('viewController', function ($scope) {
 			jDescription: 'Import the names of your students by pasting in a list or entering them using the form.'
 		},
 		{
-			src: 'fragments/frag2.html',
-			jTitle: 'Test view',
-			jDescription: 'Lorem ipsum dolor sit amet.'
+			src: 'fragments/template.html',
+			jTitle: 'Create template',
+			jDescription: 'Create a template that you will use to quickly generate reports based on the criteria you set.'
 		}
 	];
 

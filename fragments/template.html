@@ -1,0 +1,31 @@
+<div ng-controller="templateController" class="col-lg-6 col-md-6s col-sm-6">
+	<form>
+		<h3>Create template</h3>
+		<div class="form-group row">
+			<label for="name">Template name</label>
+			<input type="text" id="name" class="form-control" ng-model="template.name">
+		</div>
+		<h3>Aspects</h3>
+		<div>
+			<!-- Row of buttons for selecting the current aspect to edit -->
+			<button ng-if="template.aspects.length > 0"
+					ng-repeat="aspect in template.aspects"
+					ng-click="changeAspect($index)"
+					ng-class="($index == currentAspect) ? 'btn btn-primary' : 'btn btn-default'">
+				{{aspect.aName}}
+			</button>
+		</div>
+
+		<div class="form-group row"
+			 ng-if="template.aspects.length > 0"
+			 ng-repeat="comment in template.aspects[currentAspect].comments">
+			<input type="text" class="form-control" ng-model="comment[1]">
+		</div>
+
+	</form>
+
+
+
+
+	<button ng-click="create()">Test</button>
+</div>
