@@ -1,0 +1,59 @@
+<!doctype html>
+<html ng-app="app1">
+   <head>
+      <link rel="stylesheet" href="styles/namelist.css">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <title>Student reports generator</title>
+   </head>
+   <body>
+      <div class="container">
+         <div class="page-header">
+            <h1>Student reports generator</h1>
+         </div>
+
+		<!-- VIEW CONTROLLER -->
+		<div ng-controller="viewController">
+
+			<div class="jumbotron">
+               <h2>{{views[currentView].jTitle}}</h2>
+               <p>{{views[currentView].jDescription}}</p>
+            </div>
+
+			<div ng-controller="studentsController">
+
+				<!-- CLASS LIST -->
+			   <div class="col-lg-4 col-md-4 col-sm-6">
+				   <h3>Your students</h3>
+			   <div class="panel panel-default">
+				  <ul class="namelist">
+					 <li ng-repeat = "name in names">
+						{{name.fName}} {{name.lName}}
+					 </li>
+				  </ul>
+			   </div>
+			  </div>
+
+			   <!-- Load import form from separate file -->
+			   <ng-include ng-if="currentView == 0" src="'fragments/import.html'"></ng-include>
+			   <ng-include ng-if="currentView == 1" src="'fragments/template.html'"></ng-include>
+			</div>
+
+			<span>{{"current view: " + views[currentView].jTitle}}</span>
+			<button ng-click="switchView()">Change view</button>
+			<button onclick="location.reload(true)">Reload page</button>
+
+		</div>
+
+
+         <!-- Adds a controller that the Angular module will control.
+            The view is the div element and all that it contains. The $scope
+            component is used to provide data to the view. -->
+
+      </div>
+      <!-- Load the AngularJS library -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+      <!-- Load the JS Module -->
+      <script src="js/exam1.js"></script>
+   </body>
+</html>
