@@ -1,6 +1,12 @@
 <div class="col-lg-6 col-md-6 col-sm-6">
    <h3>Paste in a list of your student's names</h3>
-   <textarea name="textArea" id="textArea" cols="50" rows="10"  ng-model="$parent.textAreaContent" placeholder="One name on each line"></textarea><br>
+   <textarea name="textArea" id="textArea"
+   			 cols="50" rows="10"
+   			 ng-model="$parent.textAreaContent"
+			 placeholder="One name on each line"
+			 class="form-control">
+	</textarea><br>
+
    <button ng-click="parseNames()" class="btn btn-primary">Add all</button>
 
 	<h3>Or add them individually</h3>
