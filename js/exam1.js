@@ -34,16 +34,21 @@ app1.controller('studentsController', function ($scope) {
 
 	$scope.parseNames = function () {
 		$scope.textAreaContent = document.getElementById("textArea").value;
-		var separated = $scope.textAreaContent.split(/\r?\n/);
-		console.log(separated);
+		if ($scope.textAreaContent != ''){
+			var separated = $scope.textAreaContent.split(/\r?\n/);
+			console.log(separated);
 
-		for (n in separated) {
-			var split = separated[n].split(' ');
-			$scope.names.push({
-				fName: split[0],
-				lName: split[1]
-			});
+			for (n in separated) {
+				if (separated[n] != ''){
+					var split = separated[n].split(' ');
+					$scope.names.push({
+						fName: split[0],
+						lName: split[1]
+					});
+				}
+			}
 		}
+
 		//Clear the box
 		document.getElementById("textArea").value = "";
 		$scope.textAreaContent = "";
@@ -93,11 +98,11 @@ app1.controller('templateController', function ($scope) {
 			this.comments = comments;
 		}
 		return(new aspect(name, comments));
-	}
+	};
 
 	$scope.create = function() {
-		$scope.template.aspects.push($scope.createAspect('Attendence', [['Good', 'Good attendance'], ['Shit', 'Poor attendance']]));
-		$scope.template.aspects.push($scope.createAspect('Homework', [['Good', 'Well done with homework'], ['Shit', 'Poor homework']]));
+		$scope.template.aspects.push($scope.createAspect('Attendence', [['Good', 'Good attendance'], ['Poor', 'Poor attendance']]));
+		$scope.template.aspects.push($scope.createAspect('Homework', [['Good', 'Well done with homework'], ['Poor', 'Poor homework']]));
 
 		for (a in $scope.template.aspects){
 			console.log($scope.template.aspects[a].aName);
@@ -106,12 +111,36 @@ app1.controller('templateController', function ($scope) {
 
 	$scope.currentAspect = 1;
 	$scope.changeAspect = function(index) {
-			$scope.currentAspect = index;	
+			$scope.currentAspect = index;
+	};
+
+	//Adding aspects
+	$scope.addingAspect = false;
+	$scope.newAspectName = '';
+	$scope.toggleAddingAspect = function() {
+		$scope.addingAspect = !$scope.addingAspect;
+	};
+	$scope.addAspect = function() {
+		const blankComment = [['', '']];
+
+		if ($scope.newAspectName != '') {
+			$scope.template.aspects.push($scope.createAspect($scope.newAspectName, blankComment));
+			$scope.newAspectName = '';
+			$scope.currentAspect = $scope.template.aspects.length - 1;
+			$scope.toggleAddingAspect();
+		}
+		else {
+			$scope.toggleAddingAspect();
+		}
+	};
+	$scope.addCommentToAspect = function(aspectIndex) {
+		const blankComment = [[''], ['']];
+		$scope.template.aspects[aspectIndex].comments.push(blankComment);
 	};
 });
 
 // View controller
-app1.controller('viewController', function ($scope, $sce) {
+app1.controller('viewController', function ($scope) {
 
 	$scope.views = [
 		{
@@ -134,4 +163,8 @@ app1.controller('viewController', function ($scope, $sce) {
 		}
 		else $scope.currentView = 0;
 	}
+});
+
+app1.controller('helpController', function($scope) {
+
 });
