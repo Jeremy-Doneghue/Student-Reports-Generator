@@ -39,8 +39,8 @@
 
 			   <!-- Load import form from separate file -->
 			   <div class="col-lg-6 col-md-6s col-sm-6">
-				   <ng-include ng-if="currentView == 0" src="'fragments/import.html'"></ng-include>
-    			   <ng-include ng-if="currentView == 1" src="'fragments/template.html'"></ng-include>
+				   <ng-include ng-if="currentView == 0" src="'components/import/import.html'"></ng-include>
+    			   <ng-include ng-if="currentView == 1" src="'components/template/template.html'"></ng-include>
 			   </div>
 			</div>
 
@@ -48,7 +48,8 @@
 				<div ng-controller="helpController">
 					<h3>Help</h3>
 					<div class="panel panel-default panel-help">
-						<span>{{"current view: " + views[currentView].jTitle}}</span>
+						<span>{{"current view: " + views[currentView].jTitle}}</span><br>
+						<span>{{test}}</span><br>
 						<button ng-click="switchView()">Change view</button><br>
 						<button onclick="location.reload(true)">Reload page</button>
 					</div>
@@ -69,6 +70,10 @@
       <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script> -->
 	  <script src="angular.min.js"></script>
       <!-- Load the JS Module -->
-      <script src="js/exam1.js"></script>
+      <script src="js/init.js"></script>
+	  <script src="components/viewController/viewController.js"></script>
+	  <script src="components/import/import.js"></script>
+	  <script src="components/template/template.js"></script>
+	  <script src="components/help/help.js"></script>
    </body>
 </html>
