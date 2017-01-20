@@ -44,6 +44,7 @@
 			   </div>
 			</div>
 
+			<!-- Help, I need somebody, HELP! -->
 			<div class="col-lg-3 col-md-3 col-sm-6">
 				<div ng-controller="helpController">
 					<h3>Help</h3>
@@ -51,7 +52,12 @@
 						<span>{{"current view: " + views[currentView].jTitle}}</span><br>
 						<span>{{test}}</span><br>
 						<button ng-click="switchView()">Change view</button><br>
-						<button onclick="location.reload(true)">Reload page</button>
+						<button onclick="location.reload(true)">Reload page</button><br>
+
+						<div ng-repeat="comments in helpComments[currentView]">
+							<h3>{{comments[0]}}</h3>
+							<p>{{comments[1]}}</p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -59,11 +65,6 @@
 
 
 		</div>
-
-
-         <!-- Adds a controller that the Angular module will control.
-            The view is the div element and all that it contains. The $scope
-            component is used to provide data to the view. -->
 
       </div>
       <!-- Load the AngularJS library -->
