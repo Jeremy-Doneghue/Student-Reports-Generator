@@ -15,6 +15,14 @@ app1.controller('templateController', function ($scope) {
 		var aspect = function(name, comments) {
 			this.aName = name;
 			this.comments = comments;
+
+			this.addComment = function() {
+				this.comments.push([[''], ['']]);
+			};
+
+			this.removeComment = function(index) {
+				this.comments.splice(index, 1);
+			};
 		}
 		return(new aspect(name, comments));
 	};
@@ -53,7 +61,10 @@ app1.controller('templateController', function ($scope) {
 		}
 	};
 	$scope.addCommentToAspect = function(aspectIndex) {
-		const blankComment = [[''], ['']];
-		$scope.template.aspects[aspectIndex].comments.push(blankComment);
+		$scope.template.aspects[aspectIndex].addComment();
+	};
+
+	$scope.removeCommentFromCurrentAspect = function(index) {
+		$scope.template.aspects[$scope.currentAspect].removeComment(index);
 	};
 });
