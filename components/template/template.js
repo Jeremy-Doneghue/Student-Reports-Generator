@@ -67,4 +67,10 @@ app1.controller('templateController', function ($scope) {
 	$scope.removeCommentFromCurrentAspect = function(index) {
 		$scope.template.aspects[$scope.currentAspect].removeComment(index);
 	};
+
+	// Greeting message
+	$scope.showOverlay = true;
+	$scope.toggleOverlay = function() {
+		$scope.showOverlay = !$scope.showOverlay;
+	};
 });

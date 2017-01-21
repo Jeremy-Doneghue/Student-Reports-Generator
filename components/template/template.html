@@ -47,14 +47,26 @@
 				 </div>
 
 				 <div>
-				 	<button class="btn btn-danger" ng-click="removeCommentFromCurrentAspect($index)">x</button>
+				 	<button class="btn btn-danger" ng-click="removeCommentFromCurrentAspect($index)">
+				 		<span class="glyphicon glyphicon-remove"></span>
+				 	</button>
 				 </div>
 				 <br>
 			</div>
 			<button ng-if="template.aspects.length > 0" ng-click="addCommentToAspect(currentAspect)" class="btn btn-success">Add comment</button>
 		</div>
 
-
+		<div ng-if="showOverlay">
+			<div class="overlay" ng-click="toggleOverlay()"></div>
+			<div class="overlay-message">
+				<div class="container">
+					<h3>First time user?</h3>
+					<p>If this is your first time using this utility, you can load an example template.</p>
+					<button ng-click="create(); toggleOverlay()" class="btn btn-info">Load example</button>
+					<button ng-click="toggleOverlay()" class="btn btn-success">Blank template</button>
+				</div>
+			</div>
+		</div>
 
 
 

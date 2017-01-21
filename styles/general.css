@@ -1,3 +1,49 @@
 .panel-help {
 	background-color: #EEEEEE;
 }
+
+.panel-help p, .panel-help h3 {
+	padding-left: 5%;
+	padding-right: 5%;
+	text-align: justify;
+}
+
+/* Initial template overlay screen*/
+
+/*Dark background*/
+.overlay {
+    position:fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000;
+    opacity: 0.8;
+    z-index: 1001;
+}
+
+/*Message box*/
+.overlay-message {
+    position: fixed;
+	display: flex;
+    top: 30%;
+    left: 30%;
+	bottom: 30%;
+	right: 30%;
+    background-color: #fff;
+    opacity: 1;
+    z-index: 1002;
+	border-radius: 15px;
+}
+
+.overlay-message container {
+	padding: 5%;
+}
+
+.overlay-message p, .overlay-message h3 {
+	text-align: center;
+}
+
+.overlay-message button {
+	width: 49%;
+}
