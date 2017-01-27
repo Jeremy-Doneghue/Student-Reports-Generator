@@ -3,8 +3,8 @@
 		<div class="form-group row">
 			<div class="row col-sm-12">
 				<h3>Create template</h3>
-				<label for="name">Template name</label>
-				<input type="text" id="name" class="form-control" ng-model="template.name" placeholder="Example: Chemistry lvl3 A">
+				<label for="name">Template name:</label>
+				<input type="text" id="name" class="form-control" ng-model="template.tName" placeholder="Example: Chemistry lvl3 A">
 			</div>
 		</div>
 
@@ -62,8 +62,8 @@
 				<div class="container">
 					<h3>First time user?</h3>
 					<p>If this is your first time using this utility, you can load an example template.</p>
-					<button ng-click="create(); toggleOverlay()" class="btn btn-info">Load example</button>
-					<button ng-click="toggleOverlay()" class="btn btn-success">Blank template</button>
+					<button ng-click="loadExample(); toggleOverlay()" class="btn btn-info">Load example</button>
+					<button ng-click="toggleOverlay()" class="btn btn-default">Blank template</button>
 				</div>
 			</div>
 		</div>
@@ -73,5 +73,5 @@
 	</form>
 
 	<br>
-	<button ng-click="create()">Test</button>
+	<button ng-click="loadExample()">Test</button>
 </div>
