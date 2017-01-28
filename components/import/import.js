@@ -1,5 +1,5 @@
 // Student import controller
-app1.controller('studentsController', function ($scope) {
+app1.controller('studentsController', function ($scope, studentService) {
 
 	$scope.textAreaContent = "";
 
@@ -25,10 +25,7 @@ app1.controller('studentsController', function ($scope) {
 		$scope.textAreaContent = "";
 	};
 
-	$scope.names = [
-		  {fName: "Tim", lName: "Taylor"},
-		  {fName: "Al", lName: "Boreland"}
-	];
+	$scope.names = studentService;
 
 	$scope.itemsToAdd = [{
 		fName: "",
