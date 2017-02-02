@@ -1,1 +1,1 @@
-var app1 = angular.module('app1', []);
+var app1 = angular.module('app1', ['ngAnimate']);
