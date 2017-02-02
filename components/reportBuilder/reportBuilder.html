@@ -1,0 +1,44 @@
+<div ng-controller="reportController">
+	<link rel="stylesheet" href="components/reportBuilder/builder.css">
+	<h3>Report Builder</h3>
+
+	<h3>{{$parent.names[selectedStudent].fName}} {{$parent.names[selectedStudent].lName}}</h3>
+	<!-- <h3>{{currentStudent.fName}} {{currentStudent.lName}}</h3> -->
+	<label for="pronoun">Gender pronoun
+		<select id="pronoun">
+	  		<option value="m">Male</option>
+	  		<option value="f">Female</option>
+	  		<option value="n">Neutral pronoun</option>
+		</select>
+		<!-- TODO: Make that cog bring up options relating to student pronouns -->
+		<span class="glyphicon glyphicon-cog" onclick="alert('options relating to student pronouns')"></span>
+	</label>
+
+	<h3>Questionaire</h3>
+	<div>
+		<div ng-repeat="aspect in template.aspects" >
+			<span class="aspect-name">{{aspect.aName}}</span>
+			<div class="question">
+				<span ng-repeat="option in aspect.comments">
+					<label>{{option[0]}}
+						<input type="radio" name="{{$parent.$index}}" value="{{$index}}" ng-model="answers[$parent.$index]">
+					</label>
+				</span>
+				<!-- <span><input type="checkbox" name="" value="enabled" class="toggle" checked>Enabled</span> -->
+
+			</div>
+		</div>
+	</div>
+	<button ng-click="generate()">Test</button>
+	<h3>Answers</h3>
+	<table>
+		<tr>
+			<th>Aspect</th>
+			<th>Choice</th>
+		</tr>
+		<tr ng-repeat="aspect in template.aspects">
+			<td>{{aspect.aName}}</td>
+			<td>{{template.aspects[$index].comments[answers[$index]][0]}}</td>
+		</tr>
+	</table>
+</div>

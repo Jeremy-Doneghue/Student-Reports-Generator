@@ -1,0 +1,42 @@
+.question {
+	background-color: #EEE;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	padding-left: 1em;
+	margin-bottom: 1em;
+}
+
+.question label {
+	font-weight: normal;
+}
+
+.aspect-name {
+	font-weight: bold;
+}
+
+.toggle {
+	margin-left: 4em;
+}
+
+/*TABLE CSS*/
+table {
+    width:100%;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+table#t01 tr:nth-child(even) {
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+   background-color:#fff;
+}
+table#t01 th {
+    background-color: black;
+    color: white;
+}
