@@ -14,7 +14,8 @@ app1.controller('studentsController', function ($scope, studentService) {
 					var split = separated[n].split(' ');
 					$scope.names.push({
 						fName: split[0],
-						lName: split[1]
+						lName: split[1],
+						report: null
 					});
 				}
 			}
@@ -26,6 +27,7 @@ app1.controller('studentsController', function ($scope, studentService) {
 	};
 
 	$scope.names = studentService;
+	$scope.selectedStudent = 0;
 
 	$scope.itemsToAdd = [{
 		fName: "",
