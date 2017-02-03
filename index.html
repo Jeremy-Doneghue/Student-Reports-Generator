@@ -31,12 +31,13 @@
 			   <div class="panel panel-default">
 				  <ul class="namelist">
 					 <li ng-repeat = "name in names"
-					 	 ng-click="$parent.selectedStudent = $index">
+					 	 ng-click="setSelectedStudent($index)">
 						{{name.fName}} {{name.lName}}
 					 </li>
 				  </ul>
 			   </div>
-			   <p>Selected student: {{names[selectedStudent].fName}} {{names[selectedStudent].lName}}</p>
+			   <p>Selected student: {{getSelectedStudent().fName}} {{getSelectedStudent().lName}}</p>
+				<p>Gender: {{getSelectedStudent().gender}}</p>
 			  </div>
 
 			   <!-- Load import form from separate file -->
