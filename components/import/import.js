@@ -15,6 +15,7 @@ app1.controller('studentsController', function ($scope, studentService) {
 					$scope.names.push({
 						fName: split[0],
 						lName: split[1],
+						gender: null,
 						report: null
 					});
 				}
@@ -26,8 +27,13 @@ app1.controller('studentsController', function ($scope, studentService) {
 		$scope.textAreaContent = "";
 	};
 
-	$scope.names = studentService;
-	$scope.selectedStudent = 0;
+	$scope.names = studentService.list;
+	$scope.setSelectedStudent = function(index) {
+		studentService.currentStudent = index;
+	}
+	$scope.getSelectedStudent = function() {
+		return studentService.list[studentService.currentStudent];
+	}
 
 	$scope.itemsToAdd = [{
 		fName: "",
