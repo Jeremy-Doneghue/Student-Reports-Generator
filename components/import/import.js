@@ -15,6 +15,7 @@ app1.controller('studentsController', function ($scope, studentService) {
 					$scope.names.push({
 						fName: split[0],
 						lName: split[1],
+						gender: null,
 						report: null
 					});
 				}

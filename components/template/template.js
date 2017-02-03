@@ -77,6 +77,5 @@ app1.controller('templateController', function ($scope, templateService) {
 	$scope.showOverlay = true;
 	$scope.toggleOverlay = function() {
 		$scope.showOverlay = !$scope.showOverlay;
-		$scope.loadExample(); //TODO: TEMPORARY
 	};
 });
