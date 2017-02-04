@@ -27,6 +27,7 @@ app1.controller('studentsController', function ($scope, studentService) {
 		$scope.textAreaContent = "";
 	};
 
+	//Student list manipulation
 	$scope.names = studentService.list;
 	$scope.setSelectedStudent = function(index) {
 		studentService.currentStudent = index;
@@ -34,7 +35,11 @@ app1.controller('studentsController', function ($scope, studentService) {
 	$scope.getSelectedStudent = function() {
 		return studentService.list[studentService.currentStudent];
 	}
+	$scope.removeStudentAtIndex = function(index) {
+		studentService.removeStudentAtIndex(index);
+	}
 
+	//Adding students to the list
 	$scope.itemsToAdd = [{
 		fName: "",
 		lName: ""

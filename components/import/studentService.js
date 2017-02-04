@@ -1,5 +1,5 @@
 app1.factory('studentService', function() {
-	var list = {
+	var obj = {
 		currentStudent: 0,
 
 		list: [
@@ -10,8 +10,12 @@ app1.factory('studentService', function() {
 
 		getCurrentStudent: function() {
 			return list[this.currentStudent];
+		},
+
+		removeStudentAtIndex: function(index) {
+			this.list.splice(index, 1);
 		}
 	}
 
-	return list;
+	return obj;
 });

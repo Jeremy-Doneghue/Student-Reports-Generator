@@ -29,7 +29,8 @@
 				  <ul class="namelist">
 					 <li ng-repeat = "name in names"
 					 	 ng-click="setSelectedStudent($index)">
-						{{name.fName}} {{name.lName}}
+						<span>{{name.fName}} {{name.lName}}</span>
+						<span class="glyphicon clickable glyphicon-remove" ng-click="removeStudentAtIndex($index)"></span>
 					 </li>
 				  </ul>
 			   </div>
