@@ -8,3 +8,6 @@ This app is currently in pre alpha development and can be considered a prototype
 2. Run `npm i` to install the node dependencies
 3. Run `npm start` to start the http server. Navigate to the URL that it provides (usually http://localhost:8080)
 4. Have fun!
+
+## Development Environment
+This project uses an [.editorconfig](http://editorconfig.org/) file to ensure that tabs, line endings etc are kept the same across development environments. You can find a plugin for your text editor [here](http://editorconfig.org/#download).
