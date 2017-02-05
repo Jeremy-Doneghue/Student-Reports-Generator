@@ -15,7 +15,7 @@ app1.controller('templateController', function ($scope, templateService) {
 	$scope.loadExample = function() {
 		templateService.createAspect('General comment', [
 			['Excellent', '$n is a focused student who has an obvious passion for the subject.'],
-			['Good', '$n is a pleasant young man who has approached Art with an open mind and a willingness to learn new things.'],
+			['Good', '$n is a pleasant young $g who has approached Art with an open mind and a willingness to learn new things.'],
 			['Has potential', '$n is a capable student who has achieved good grades thus far, but I believe he is capable of better.'],
 			['Absent a lot', 'Numerous absences have contributed to a lack of work and engagement with the subject.'],
 		]);
@@ -23,7 +23,7 @@ app1.controller('templateController', function ($scope, templateService) {
 		templateService.createAspect('Homework', [
 			['Average', 'A more focused effort in class and with homework to ensure work is completed will help $m to achieve better.'],
 			['Poor', '$n has not managed to complete any homework at all this term, which has been a detriment to $p grades.'],
-			['Improved', '$a has made a much greater effort this term to complete his homework, which has led to a marked improvement in $p grades.']
+			['Improved', '$m has made a much greater effort this term to complete $p homework, which has led to a marked improvement in $p grades.']
 		]);
 
 		templateService.createAspect('Grades', [
@@ -38,9 +38,12 @@ app1.controller('templateController', function ($scope, templateService) {
 			['Not Achieved', '---- Not-achieved comment ----']
 		]);
 
-		templateService.createAspect('Work', [
-			['Good', 'Well done with homework'],
-			['Poor', 'Poor homework']
+		templateService.createAspect('Test features', [
+			['Test possesive name', 'Possesive name test: /$pn => $pn work has been good. /$np => $np work has been good.'],
+			['Test posessive', 'Posessive pronoun test: That is $p ball.'],
+			['Test name', 'Name test: /$n => $n is the name.'],
+			['Test personal pronouns', 'Personal pronoun test: /$m => $m is a person.'],
+			['Test gender', 'Gender test: $n is a pleasant young $g']
 		]);
 	};
 

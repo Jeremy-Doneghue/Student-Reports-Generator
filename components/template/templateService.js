@@ -5,7 +5,7 @@ app1.factory('templateService', function() {
 		aspects: [],
 		wildcards: {
 			trigger: '$', // Trigger replacement
-			automatic: 'a', // The algorithm will use the student's name, or he/she where it thinks it would be appropriate
+			//automatic: 'a', // The algorithm will use the student's name, or he/she where it thinks it would be appropriate
 			name: 'n', // Replace with name
 			personal: 'm', // Replace with he/she
 			posessive: 'p', // Alice's, Bob's, his, her

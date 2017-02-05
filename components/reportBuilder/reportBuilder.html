@@ -3,7 +3,7 @@
 	<h3>Report Builder</h3>
 
 	<!-- <h3>{{$parent.names[selectedStudent].fName}} {{$parent.names[selectedStudent].lName}}</h3> -->
-	<h3>{{getSelectedStudent().fName}} {{getSelectedStudent().lName}} {{getSelectedStudent().gender}}</h3>
+	<h3>{{getSelectedStudent().fName}} {{getSelectedStudent().lName}}</h3>
 	<label for="pronoun">Gender pronoun
 		<select ng-if="getSelectedStudent().gender != null" id="pronoun" ng-model="getSelectedStudent().gender">
 	  		<option value="m">Male</option>
