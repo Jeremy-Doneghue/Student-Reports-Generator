@@ -37,7 +37,7 @@ app1.controller('reportController', function ($scope, templateService, studentSe
 		
 		const wc = templateService.wildcards;
 		
-		for (word in split) {
+		for (word in split) {							
 			if (split[word][0] == wildcard.trigger) {
 
 				// If the wildcard has 2 arguments
@@ -89,6 +89,12 @@ app1.controller('reportController', function ($scope, templateService, studentSe
 								}
 							}
 					}
+				}
+			}
+			//Check if this word should be capitalised
+			if (word == 0 || split[parseInt(word) - 1].slice(-1) == '.'){
+				if (split[word] != '') {
+					split[word] = split[word].charAt(0).toUpperCase() + split[word].slice(1);
 				}
 			}
 		}
