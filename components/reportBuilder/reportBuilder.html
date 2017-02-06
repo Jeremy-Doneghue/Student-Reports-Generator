@@ -36,7 +36,12 @@
 			</div>
 		</div>
 	</div>
-	<button ng-click="generate()">Generate report</button>
+	<button ng-click="generate()" class="btn btn-primary">Generate report</button></br></br>
+	<label for="output">Generated report:
+		<textarea name="output" class="form-control" rows="8" cols="80" ng-model="getSelectedStudent().report"></textarea>
+	</label>
+	
+	
 	<h3>Answers</h3>
 	<table>
 		<tr>

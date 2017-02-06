@@ -5,10 +5,10 @@ app1.controller('reportController', function ($scope, templateService, studentSe
 	$scope.getSelectedStudent = function() {
 		return studentService.list[studentService.currentStudent];
 	}
-
+	
+	//Stores the values of the questionaire as it's being filled out.
 	$scope.answers = [];
 
-	//TODO: switching students doesnt work properly
 	$scope.generate = function() {
 		var report = '';
 
@@ -19,8 +19,10 @@ app1.controller('reportController', function ($scope, templateService, studentSe
 		}
 
 		// Find and replace pronouns
-		report = join(report, studentService.list[studentService.currentStudent], templateService.wildcards);
-		console.log(report);
+		report = join(report, $scope.getSelectedStudent(), templateService.wildcards);
+		
+		//Save the generated report to the student object
+		$scope.getSelectedStudent().report = report;
 	}
 
 	function join(text, student, wildcard) {
@@ -28,7 +30,7 @@ app1.controller('reportController', function ($scope, templateService, studentSe
 		var split = text.split(' ');
 		split = replacePronouns(split);
 		split = process(split, student, wildcard);
-		return split.join(" ");
+		return split.join(' ');
 	}
 
 	function process(split, student, wildcard) {
