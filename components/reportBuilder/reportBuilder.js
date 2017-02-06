@@ -79,7 +79,13 @@ app1.controller('reportController', function ($scope, templateService, studentSe
 						case wc.personal:
 							if (student.gender == 'm') { split[word] = 'he'; }
 							else if (student.gender == 'f') { split[word] = 'she'; }
-							else if (student.gender == 'n') { split[word] = 'they'; }
+							else if (student.gender == 'n') { 								
+								split[word] = 'they'; 
+								
+								if (split[(parseInt(word) + 1)]  == 'is') {
+									split[(parseInt(word) + 1)]  = 'are';
+								}
+							}
 					}
 				}
 			}

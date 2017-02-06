@@ -32,10 +32,10 @@ app1.controller('templateController', function ($scope, templateService) {
 			['Merit', '$n has performed well this term in his assessments achieving a grade of merit, well done.'],
 			['Low merit', '$n has managed to improve his work ethic this term and improve his achieved grade to merit.'],
 			['High achieved', '$n was close to receiving a merit grade, but a lack of attention to detail has held it to the high end of achieved.'],
-			['Achieved', '---- Achieved grade comment ----'],
-			['Low achieved', '---- Low achieved grade comment ----'],
-			['High not-achieved', '---- High not-achieved comment ----'],
-			['Not Achieved', '---- Not-achieved comment ----']
+			['*Achieved', '---- Achieved grade comment ----'],
+			['*Low achieved', '---- Low achieved grade comment ----'],
+			['*High not-achieved', '---- High not-achieved comment ----'],
+			['*Not Achieved', '---- Not-achieved comment ----']
 		]);
 
 		templateService.createAspect('Test features', [
