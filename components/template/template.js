@@ -77,10 +77,8 @@ app1.controller('templateController', function ($scope, templateService) {
 	};
 
 	// Greeting message
-	$scope.showOverlay = false;
+	$scope.showOverlay = true;
 	$scope.toggleOverlay = function() {
 		$scope.showOverlay = !$scope.showOverlay;
 	};
-
-	$scope.loadExample();
 });

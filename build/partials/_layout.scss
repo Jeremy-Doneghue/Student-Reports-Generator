@@ -2,8 +2,9 @@ body {
 	background-color: $color-light;
 }
 
-.panel-help {
-
+.panel-students .panel-body {
+	max-height: 300px;
+	overflow-y: auto;
 }
 
 .form-inline-fullwidth {
@@ -21,6 +22,6 @@ body {
 	}
 }
 
-.form-section{
+.form-section {
 	margin-bottom: 30px;
 }

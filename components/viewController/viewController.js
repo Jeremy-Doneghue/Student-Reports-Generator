@@ -16,7 +16,7 @@ app1.controller('viewController', function ($scope) {
 		}
 	];
 
-	$scope.currentView = 1;
+	$scope.currentView = 0;
 	$scope.sectionNav = document.getElementById("section-nav");
 	$scope.switchView = function ($event, viewInt) {
 		if (viewInt > 2 || viewInt < 0) viewInt = 0;
