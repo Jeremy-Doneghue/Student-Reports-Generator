@@ -22,3 +22,7 @@ The tl;dr is that you can just write normal CSS, but there are some cool feature
 The current build system is [Gulp](http://gulpjs.com/). 
 You can run `gulp` to compile the source files. 
 There is also a `scss:watch` task that you can run which will compile your changes whenever a scss file is edited. 
+
+## FAQ
+*Why is the compiled CSS included in the repo?*
+This project is served from the repo using Github Pages and so it needs the compiled CSS to display correctly.
