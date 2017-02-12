@@ -25,4 +25,5 @@ There is also a `scss:watch` task that you can run which will compile your chang
 
 ## FAQ
 *Why is the compiled CSS included in the repo?*
+
 This project is served from the repo using Github Pages and so it needs the compiled CSS to display correctly.
