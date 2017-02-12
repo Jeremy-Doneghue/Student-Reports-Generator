@@ -1,5 +1,5 @@
-# Ignore generated node_modules
-node_modules
+# Weird log file the pops up... maybe from VS Code?
+debug.log
 
 ### OSX ###
 *.DS_Store
