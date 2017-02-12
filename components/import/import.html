@@ -1,14 +1,15 @@
 <div>
 	<form>
 		<h3>Paste in a list of your student's names</h3>
-	  <textarea
-		  name="textArea"
-		  id="textArea"
-		  cols="50"
-		  rows="10"
-		  ng-model="$parent.textAreaContent"
-		  placeholder="One name on each line"
-		  class="form-control"></textarea>
+		<textarea
+			name="textArea"
+			id="textArea"
+			cols="50"
+			rows="10"
+			ng-model="$parent.textAreaContent"
+			placeholder="One name on each line"
+			class="form-control"
+		></textarea>
 		<br>
 		<button ng-click="parseNames()"
 				class="btn btn-primary">Submit
@@ -33,9 +34,12 @@
 						ng-model="itemToAdd.lName"
 					>
 
-					<button type="submit"
-							class="btn btn-primary"
-							ng-click="add(itemToAdd)">Add
+					<button
+						type="submit"
+						class="btn btn-primary"
+						ng-click="add(itemToAdd)"
+					>
+						Add
 					</button>
 				</div>
 			</div>

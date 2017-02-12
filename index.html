@@ -14,8 +14,10 @@
 			<!-- VIEW CONTROLLER -->
 			<div ng-controller="viewController">
 
-				<div ng-controller="studentsController"
-					 class="row">
+				<div
+					class="row"
+					ng-controller="studentsController"
+				>
 
 					<div class="col-md-9 col-xs-12">
 						<div>
@@ -23,12 +25,18 @@
 							<p class="lead">{{views[currentView].jDescription}}</p>
 						</div>
 						<!-- Load import form from separate file -->
-						<ng-include ng-if="currentView == 0"
-									src="'components/import/import.html'"></ng-include>
-						<ng-include ng-if="currentView == 1"
-									src="'components/template/template.html'"></ng-include>
-						<ng-include ng-if="currentView == 2"
-									src="'components/reportBuilder/reportBuilder.html'"></ng-include>
+						<ng-include
+							ng-if="currentView == 0"
+							src="'components/import/import.html'"
+						></ng-include>
+						<ng-include
+							ng-if="currentView == 1"
+							src="'components/template/template.html'"
+						></ng-include>
+						<ng-include
+							ng-if="currentView == 2"
+							src="'components/reportBuilder/reportBuilder.html'"
+						></ng-include>
 					</div>
 
 
@@ -61,7 +69,8 @@
 										ng-click="setSelectedStudent($index)">
 										<span class="name">{{name.fName}} {{name.lName}}</span>
 										<span class="glyphicon clickable glyphicon-remove pull-right"
-											  ng-click="removeStudentAtIndex($index)"></span>
+											  ng-click="removeStudentAtIndex($index)"
+										></span>
 									</li>
 								</ul>
 							</div>
