@@ -1,0 +1,21 @@
+body {
+	font-family: $font-body;
+}
+
+.namelist li {
+	margin: 15px;
+
+	.name {
+		&:hover {
+			color: $brand-primary;
+			cursor: pointer;
+		}
+	}
+
+	.glyphicon-remove {
+		&:hover {
+			color: $brand-danger;
+		}
+	}
+}
+
