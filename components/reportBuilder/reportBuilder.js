@@ -84,8 +84,12 @@ app1.controller('reportController', function ($scope, templateService, studentSe
 							else if (student.gender == 'n') { 								
 								split[word] = 'they'; 
 								
+								//Grammar replacements when 'he/she is' changes to 'they are' etc.
 								if (split[(parseInt(word) + 1)]  == 'is') {
 									split[(parseInt(word) + 1)]  = 'are';
+								}
+								if (split[(parseInt(word) + 1)]  == 'has') {
+									split[(parseInt(word) + 1)]  = 'have';
 								}
 							}
 					}
