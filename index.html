@@ -50,11 +50,11 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Your Students</div>
 					<div class="panel-body">
-						<ul class="namelist">
+						<ul class="namelist list-unstyled">
 							<li
 								ng-repeat="name in names"
 								ng-click="setSelectedStudent($index)">
-								<span>{{name.fName}} {{name.lName}}</span>
+								<span class="name">{{name.fName}} {{name.lName}}</span>
 							<span class="glyphicon clickable glyphicon-remove pull-right"
 								  ng-click="removeStudentAtIndex($index)"></span>
 							</li>

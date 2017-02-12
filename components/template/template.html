@@ -9,8 +9,12 @@
 			</div>
 		</div>
 		<section id="aspects" class="form-section">
+
 			<div class="form-group">
 				<h4>Aspects</h4>
+				<div class="form-group">
+
+				</div>
 				<!-- Row of buttons for selecting the current aspect to edit -->
 				<div class="aspect-btns">
 					<button ng-if="template.aspects.length > 0"
@@ -19,27 +23,26 @@
 							ng-class="($index == currentAspect) ? 'btn btn-default active btn-block-sm' : 'btn btn-default btn-block-sm'">
 						{{aspect.aName}}
 					</button>
-				</div>
-			</div>
+					<button class="btn btn-success"
+							ng-click="toggleAddingAspect()"
+							ng-if="addingAspect == false">Add an Aspect
+					</button>
 
-			<div class="form-group">
-				<button class="btn btn-success"
-						ng-click="toggleAddingAspect()"
-						ng-if="addingAspect == false">Add aspect
-				</button>
-
-				<div class="form-inline">
+					<div class="form-inline">
 				<span class="" ng-if="addingAspect">
 					<input type="text" ng-model="$parent.newAspectName" class="form-control">
 				</span>
 
-					<button ng-if="addingAspect" ng-click="addAspect()" class="btn btn-success">Add</button>
+						<button ng-if="addingAspect" ng-click="addAspect()" class="btn btn-success">Add</button>
+					</div>
 				</div>
 			</div>
+
+
 		</section>
 		<!-- Text inputs for entering comments -->
 		<section id="comments" class="form-section">
-			<h4>Comments</h4>
+			<h4>Comments for {{template.aspects[currentAspect].aName}}</h4>
 
 			<div ng-if="template.aspects.length > 0"
 				 ng-repeat="comment in template.aspects[currentAspect].comments" ng-class="'aspect-comment'">
