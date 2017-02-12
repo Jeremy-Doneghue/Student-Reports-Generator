@@ -1,4 +1,7 @@
-# Ignore generated node_modules
+# Weird log file the pops up... maybe from VS Code?
+debug.log
+
+# node_modules
 node_modules
 
 ### OSX ###
