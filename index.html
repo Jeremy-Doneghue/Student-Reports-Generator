@@ -1,70 +1,89 @@
 <!doctype html>
 <html ng-app="app1">
 	<head>
-		<link
-			rel="stylesheet"
-			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-			integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-			crossorigin="anonymous"
-		>
-		<link rel="stylesheet" href="styles/namelist.css">
-		<link rel="stylesheet" href="styles/general.css">
+		<link rel="stylesheet" href="assets/css/styles.css">
 		<title>Student reports generator</title>
 	</head>
 	<body>
 		<div class="container">
 			<div class="page-header">
-				<h1>Student reports generator</h1>
+				<h1 class="site-title">Student Reports Generator</h1>
 			</div>
 
 			<!-- VIEW CONTROLLER -->
 			<div ng-controller="viewController">
 
-				<div class="jumbotron">
-					<h2>{{views[currentView].jTitle}}</h2>
-					<p>{{views[currentView].jDescription}}</p>
-				</div>
+				<div
+					class="row"
+					ng-controller="studentsController"
+				>
 
-				<div ng-controller="studentsController">
-
-					<!-- CLASS LIST -->
-					<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-						<h3>Your students</h3>
-						<div class="panel panel-default">
-							<ul class="namelist">
-								<li
-									ng-repeat="name in names"
-									ng-click="setSelectedStudent($index)">
-									<span>{{name.fName}} {{name.lName}}</span>
-									<span class="glyphicon clickable glyphicon-remove" ng-click="removeStudentAtIndex($index)"></span>
-								</li>
-							</ul>
+					<div class="col-md-9 col-xs-12">
+						<div>
+							<h2>{{views[currentView].jTitle}}</h2>
+							<p class="lead">{{views[currentView].jDescription}}</p>
 						</div>
-						<p>Selected student: {{getSelectedStudent().fName}} {{getSelectedStudent().lName}}</p>
-						<p>Gender: {{getSelectedStudent().gender}}</p>
+						<!-- Load import form from separate file -->
+						<ng-include
+							ng-if="currentView == 0"
+							src="'components/import/import.html'"
+						></ng-include>
+						<ng-include
+							ng-if="currentView == 1"
+							src="'components/template/template.html'"
+						></ng-include>
+						<ng-include
+							ng-if="currentView == 2"
+							src="'components/reportBuilder/reportBuilder.html'"
+						></ng-include>
 					</div>
 
-					<!-- Load import form from separate file -->
-					<div class="col-lg-6 col-md-6s col-sm-12 col-xs-12">
-						<ng-include ng-if="currentView == 0" src="'components/import/import.html'"></ng-include>
-						<ng-include ng-if="currentView == 1" src="'components/template/template.html'"></ng-include>
-						<ng-include ng-if="currentView == 2" src="'components/reportBuilder/reportBuilder.html'"></ng-include>
-					</div>
-				</div>
 
-				<!-- Help, I need somebody, HELP! -->
-				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-					<div ng-controller="helpController">
-						<h3>Help</h3>
-						<div class="panel panel-default panel-help">
-							<span>{{"current view: " + views[currentView].jTitle}}</span><br>
-							<span>{{test}}</span><br>
-							<button ng-click="switchView()">Change view</button><br>
-							<button onclick="location.reload(true)">Reload page</button><br>
-
-							<div ng-repeat="comments in helpComments[currentView]">
-								<h3>{{comments[0]}}</h3>
-								<p>{{comments[1]}}</p>
+					<div class="col-md-3 col-xs-12">
+						<!--NAVIGATION-->
+						<div class="panel panel-default">
+							<div class="panel-heading">Navigation</div>
+							<div class="panel-body">
+								<ul class="nav nav-pills nav-stacked"
+									id="section-nav">
+									<li ng-class="(0 == currentView) ? 'active' : ''">
+										<a ng-click="switchView($event, 0)">Import Students</a>
+									</li>
+									<li ng-class="(1 == currentView) ? 'active' : ''">
+										<a ng-click="switchView($event,1)">Manage Templates</a>
+									</li>
+									<li ng-class="(2 == currentView) ? 'active' : ''">
+										<a ng-click="switchView($event,2)">Build a Report</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!--CLASS LIST-->
+						<div class="panel panel-default panel-students">
+							<div class="panel-heading">Your Students</div>
+							<div class="panel-body">
+								<ul class="namelist list-unstyled">
+									<li
+										ng-repeat="name in names"
+										ng-click="setSelectedStudent($index)">
+										<span class="name">{{name.fName}} {{name.lName}}</span>
+										<span class="glyphicon clickable glyphicon-remove pull-right"
+											  ng-click="removeStudentAtIndex($index)"
+										></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!--HELP-->
+						<div ng-controller="helpController">
+							<div class="panel panel-default panel-help">
+								<div class="panel-heading">Help</div>
+								<div class="panel-body">
+									<div ng-repeat="comments in helpComments[currentView]">
+										<h4>{{comments[0]}}</h4>
+										<p>{{comments[1]}}</p>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

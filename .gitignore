@@ -1,6 +1,9 @@
 # Weird log file the pops up... maybe from VS Code?
 debug.log
 
+# node_modules
+node_modules
+
 ### OSX ###
 *.DS_Store
 .AppleDouble
@@ -24,3 +27,7 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+
+# Jetbrains IDE
+.idea

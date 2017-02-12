@@ -1,0 +1,17 @@
+.aspect-comment {
+	margin-bottom: 30px;
+}
+
+.aspect-btns {
+	display: flex;
+	flex-wrap: wrap;
+
+	button {
+		border-radius: 0;
+	}
+
+	input[type=text] {
+		border-radius: 0;
+	}
+
+}
