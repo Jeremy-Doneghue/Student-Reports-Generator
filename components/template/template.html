@@ -1,15 +1,16 @@
 <div ng-controller="templateController">
 	<form>
 		<div class="form-group row">
-			<div class="row col-sm-12">
+			<div class="col-sm-12">
 				<h3>Create template</h3>
 				<label for="name">Template name:</label>
-				<input type="text" id="name" class="form-control" ng-model="template.tName" placeholder="Example: Chemistry lvl3 A">
+				<input type="text" id="name" class="form-control" ng-model="template.tName"
+					   placeholder="Example: Chemistry lvl3 A">
 			</div>
 		</div>
 
 		<div class="form-group row">
-		<h3>Aspects</h3>
+			<h3>Aspects</h3>
 			<!-- Row of buttons for selecting the current aspect to edit -->
 			<button ng-if="template.aspects.length > 0"
 					ng-repeat="aspect in template.aspects"
@@ -22,7 +23,8 @@
 		<div class="form-group row">
 			<button class="btn btn-success"
 					ng-click="toggleAddingAspect()"
-					ng-if="addingAspect == false">Add aspect</button>
+					ng-if="addingAspect == false">Add aspect
+			</button>
 
 			<div class="col-xs-3" ng-if="addingAspect">
 				<input type="text" ng-model="$parent.newAspectName" class="form-control">
@@ -33,31 +35,32 @@
 
 		<!-- Text inputs for entering comments -->
 
-		<div class="form-group row">
+		<div class="form-group">
 			<h3>Comments</h3>
 			<div ng-if="template.aspects.length > 0"
 				 ng-repeat="comment in template.aspects[currentAspect].comments">
-				 <div class="row col-sm-3">
-	 			   <input type="text" class="form-control" ng-model="comment[0]" placeholder="Label">
-	 			 </div>
+				<div class="row">
+					<div class="col-md-3">
+						<input type="text" class="form-control " ng-model="comment[0]" placeholder="Label">
+					</div>
+					<div class="col-md-8">
+						<textarea type="text"
+								  class="form-control expanding-textarea"
+								  ng-model="comment[1]"
+								  rows="1"
+								  placeholder="Comment">
+						</textarea>
+					</div>
+					<button class="btn btn-danger col-md-1" ng-click="removeCommentFromCurrentAspect($index)">
+						<span class="glyphicon clickable glyphicon-remove"></span>
+					</button>
 
-				 <div class="row col-sm-9">
-				 	<textarea type="text"
-				 			  class="form-control expanding-textarea"
-				 			  ng-model="comment[1]"
-				 			  rows="1"
-				 			  placeholder="Comment">
-				 	</textarea>
-				 </div>
-
-				 <div>
-				 	<button class="btn btn-danger" ng-click="removeCommentFromCurrentAspect($index)">
-				 		<span class="glyphicon clickable glyphicon-remove"></span>
-				 	</button>
-				 </div>
-				 <br>
+				</div>
+				<br>
 			</div>
-			<button ng-if="template.aspects.length > 0" ng-click="addCommentToAspect(currentAspect)" class="btn btn-success">Add comment</button>
+			<button ng-if="template.aspects.length > 0" ng-click="addCommentToAspect(currentAspect)"
+					class="btn btn-success">Add comment
+			</button>
 		</div>
 
 		<div ng-if="showOverlay">

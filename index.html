@@ -1,83 +1,87 @@
 <!doctype html>
 <html ng-app="app1">
-	<head>
-		<link rel="stylesheet" href="styles/namelist.css">
-		<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-		<link rel="stylesheet" href="styles/general.css">
-		<title>Student reports generator</title>
-	</head>
-	<body>
-		<div class="container">
-			<div class="page-header">
-				<h1>Student reports generator</h1>
+<head>
+	<link rel="stylesheet" href="styles/namelist.css">
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="styles/general.css">
+	<title>Student reports generator</title>
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1>Student reports generator</h1>
+	</div>
+
+	<!-- VIEW CONTROLLER -->
+	<div ng-controller="viewController">
+
+		<div class="jumbotron">
+			<h2>{{views[currentView].jTitle}}</h2>
+			<p>{{views[currentView].jDescription}}</p>
+		</div>
+
+		<div ng-controller="studentsController" class="row">
+
+			<!-- CLASS LIST -->
+			<div class="col-md-3 col-xs-12">
+				<h3>Your students</h3>
+				<div class="panel panel-default">
+					<ul class="namelist">
+						<li
+							ng-repeat="name in names"
+							ng-click="setSelectedStudent($index)">
+							<span>{{name.fName}} {{name.lName}}</span>
+							<span class="glyphicon clickable glyphicon-remove pull-right"
+								  ng-click="removeStudentAtIndex($index)"></span>
+						</li>
+					</ul>
+				</div>
+				<p>Selected student: {{getSelectedStudent().fName}} {{getSelectedStudent().lName}}</p>
+				<p>Gender: {{getSelectedStudent().gender}}</p>
 			</div>
 
-			<!-- VIEW CONTROLLER -->
-			<div ng-controller="viewController">
+			<!-- Load import form from separate file -->
+			<div class="col-md-6 col-xs-12">
+				<ng-include ng-if="currentView == 0" src="'components/import/import.html'"></ng-include>
+				<ng-include ng-if="currentView == 1" src="'components/template/template.html'"></ng-include>
+				<ng-include ng-if="currentView == 2" src="'components/reportBuilder/reportBuilder.html'"></ng-include>
+			</div>
 
-				<div class="jumbotron">
-					<h2>{{views[currentView].jTitle}}</h2>
-					<p>{{views[currentView].jDescription}}</p>
-				</div>
 
-				<div ng-controller="studentsController">
+			<!-- Help, I need somebody, HELP! -->
+			<div class="col-md-3 col-xs-12">
+				<div ng-controller="helpController">
+					<h3>Help</h3>
+					<div class="panel panel-default panel-help">
+						<span>{{"current view: " + views[currentView].jTitle}}</span><br>
+						<span>{{test}}</span><br>
+						<button ng-click="switchView()">Change view</button>
+						<br>
+						<button onclick="location.reload(true)">Reload page</button>
+						<br>
 
-					<!-- CLASS LIST -->
-					<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-						<h3>Your students</h3>
-						<div class="panel panel-default">
-							<ul class="namelist">
-								<li
-									ng-repeat="name in names"
-									ng-click="setSelectedStudent($index)">
-									<span>{{name.fName}} {{name.lName}}</span>
-									<span class="glyphicon clickable glyphicon-remove" ng-click="removeStudentAtIndex($index)"></span>
-								</li>
-							</ul>
-						</div>
-						<p>Selected student: {{getSelectedStudent().fName}} {{getSelectedStudent().lName}}</p>
-						<p>Gender: {{getSelectedStudent().gender}}</p>
-					</div>
-
-					<!-- Load import form from separate file -->
-					<div class="col-lg-6 col-md-6s col-sm-12 col-xs-12">
-						<ng-include ng-if="currentView == 0" src="'components/import/import.html'"></ng-include>
-						<ng-include ng-if="currentView == 1" src="'components/template/template.html'"></ng-include>
-						<ng-include ng-if="currentView == 2" src="'components/reportBuilder/reportBuilder.html'"></ng-include>
-					</div>
-				</div>
-
-				<!-- Help, I need somebody, HELP! -->
-				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-					<div ng-controller="helpController">
-						<h3>Help</h3>
-						<div class="panel panel-default panel-help">
-							<span>{{"current view: " + views[currentView].jTitle}}</span><br>
-							<span>{{test}}</span><br>
-							<button ng-click="switchView()">Change view</button><br>
-							<button onclick="location.reload(true)">Reload page</button><br>
-
-							<div ng-repeat="comments in helpComments[currentView]">
-								<h3>{{comments[0]}}</h3>
-								<p>{{comments[1]}}</p>
-							</div>
+						<div ng-repeat="comments in helpComments[currentView]">
+							<h3>{{comments[0]}}</h3>
+							<p>{{comments[1]}}</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- Load the AngularJS library -->
-		<script src="node_modules/angular/angular.min.js"></script>
-		<!-- Load angular animations library -->
-		<script src="node_modules/angular-animate/angular-animate.min.js"></script>
-		<!-- Load the JS Module -->
-		<script src="js/init.js"></script>
-		<script src="components/viewController/viewController.js"></script>
-		<script src="components/import/import.js"></script>
-		<script src="components/import/studentService.js"></script>
-		<script src="components/template/templateService.js"></script>
-		<script src="components/template/template.js"></script>
-		<script src="components/reportBuilder/reportBuilder.js"></script>
-		<script src="components/help/help.js"></script>
-	</body>
+	</div>
+</div>
+<!-- Load the AngularJS library -->
+<script src="node_modules/angular/angular.min.js"></script>
+<!-- Load angular animations library -->
+<script src="node_modules/angular-animate/angular-animate.min.js"></script>
+<!-- Load the JS Module -->
+<script src="js/init.js"></script>
+<script src="components/viewController/viewController.js"></script>
+<script src="components/import/import.js"></script>
+<script src="components/import/studentService.js"></script>
+<script src="components/template/templateService.js"></script>
+<script src="components/template/template.js"></script>
+<script src="components/reportBuilder/reportBuilder.js"></script>
+<script src="components/help/help.js"></script>
+</body>
 </html>
