@@ -1,9 +1,22 @@
-.panel-help {
-	background-color: #EEEEEE;
+body {
+	background-color: $color-light;
+}
 
-	p, h3 {
-		padding-left: 5%;
-		padding-right: 5%;
-		text-align: justify;
+.panel-help {
+
+}
+
+.form-inline-fullwidth {
+	display: flex;
+
+	input {
+		flex: 3;
+	}
+
+	textarea {
+		flex: 10;
+	}
+	button {
+		flex: .25;
 	}
 }

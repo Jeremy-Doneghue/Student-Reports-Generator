@@ -1,0 +1,12 @@
+.aspect-comment {
+	margin-bottom: 30px;
+}
+
+.aspect-btns {
+	display: flex;
+	flex-wrap: wrap;
+
+	button {
+		flex-grow: 1
+	}
+}

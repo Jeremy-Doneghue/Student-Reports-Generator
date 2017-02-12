@@ -28,7 +28,7 @@ gulp.task('scss', function () {
 		.pipe(cssnano())
 		.pipe(postcss(processors))
 		.pipe(autoprefixer())
-		.pipe(gulp.dest('./assets/'))
+		.pipe(gulp.dest('./assets/css'))
 		.pipe(livereload())
 });
 

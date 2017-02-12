@@ -2,80 +2,98 @@
 	<form>
 		<div class="form-group row">
 			<div class="col-sm-12">
-				<h3>Create template</h3>
-				<label for="name">Template name:</label>
+				<h3>New Template:</h3>
+				<label for="name">Template Name:</label>
 				<input type="text" id="name" class="form-control" ng-model="template.tName"
 					   placeholder="Example: Chemistry lvl3 A">
 			</div>
 		</div>
-
-		<div class="form-group row">
-			<h3>Aspects</h3>
-			<!-- Row of buttons for selecting the current aspect to edit -->
-			<button ng-if="template.aspects.length > 0"
-					ng-repeat="aspect in template.aspects"
-					ng-click="changeAspect($index)"
-					ng-class="($index == currentAspect) ? 'btn btn-default active' : 'btn btn-default'">
-				{{aspect.aName}}
-			</button>
-		</div>
-
-		<div class="form-group row">
-			<button class="btn btn-success"
-					ng-click="toggleAddingAspect()"
-					ng-if="addingAspect == false">Add aspect
-			</button>
-
-			<div class="col-xs-3" ng-if="addingAspect">
-				<input type="text" ng-model="$parent.newAspectName" class="form-control">
+		<section id="aspects" class="form-section">
+			<div class="form-group">
+				<h4>Aspects</h4>
+				<!-- Row of buttons for selecting the current aspect to edit -->
+				<div class="aspect-btns">
+					<button ng-if="template.aspects.length > 0"
+							ng-repeat="aspect in template.aspects"
+							ng-click="changeAspect($index)"
+							ng-class="($index == currentAspect) ? 'btn btn-default active btn-block-sm' : 'btn btn-default btn-block-sm'">
+						{{aspect.aName}}
+					</button>
+				</div>
 			</div>
 
-			<button ng-if="addingAspect" ng-click="addAspect()" class="btn btn-success">Add</button>
-		</div>
+			<div class="form-group">
+				<button class="btn btn-success"
+						ng-click="toggleAddingAspect()"
+						ng-if="addingAspect == false">Add aspect
+				</button>
 
+				<div class="form-inline">
+				<span class="" ng-if="addingAspect">
+					<input type="text" ng-model="$parent.newAspectName" class="form-control">
+				</span>
+
+					<button ng-if="addingAspect" ng-click="addAspect()" class="btn btn-success">Add</button>
+				</div>
+			</div>
+		</section>
 		<!-- Text inputs for entering comments -->
+		<section id="comments" class="form-section">
+			<h4>Comments</h4>
 
-		<div class="form-group">
-			<h3>Comments</h3>
 			<div ng-if="template.aspects.length > 0"
-				 ng-repeat="comment in template.aspects[currentAspect].comments">
-				<div class="row">
-					<div class="col-md-3">
-						<input type="text" class="form-control " ng-model="comment[0]" placeholder="Label">
-					</div>
-					<div class="col-md-8">
-						<textarea type="text"
-								  class="form-control expanding-textarea"
-								  ng-model="comment[1]"
-								  rows="1"
-								  placeholder="Comment">
-						</textarea>
-					</div>
-					<button class="btn btn-danger col-md-1" ng-click="removeCommentFromCurrentAspect($index)">
-						<span class="glyphicon clickable glyphicon-remove"></span>
+				 ng-repeat="comment in template.aspects[currentAspect].comments" ng-class="'aspect-comment'">
+				<div class="form-group">
+					<label for="aspect-name" class="">Label</label>
+
+					<input id="aspect-name" name="aspect-name" type="text" class="form-control"
+						   ng-model="comment[0]"
+						   placeholder="Label">
+
+				</div>
+				<div class="form-group">
+					<label for="comment" class="">Comment</label>
+
+					<textarea
+						class="form-control"
+						ng-model="comment[1]"
+						rows="5"
+						placeholder="Comment"
+						id="comment">
+					</textarea>
+
+				</div>
+				<div class="form-group">
+
+					<button class="btn btn-success"><span class="glyphicon clickable glyphicon-copy"></span> Duplicate
+					</button>
+					<button class="btn btn-danger" ng-click="removeCommentFromCurrentAspect($index)">
+						<span class="glyphicon clickable glyphicon-remove"></span> Remove
 					</button>
 
 				</div>
-				<br>
 			</div>
-			<button ng-if="template.aspects.length > 0" ng-click="addCommentToAspect(currentAspect)"
-					class="btn btn-success">Add comment
-			</button>
-		</div>
 
-		<div ng-if="showOverlay">
-			<div class="overlay" ng-click="toggleOverlay()"></div>
-			<div class="overlay-message">
-				<div class="container">
-					<h3>First time user?</h3>
-					<p>If this is your first time using this utility, you can load an example template.</p>
-					<button ng-click="loadExample(); toggleOverlay()" class="btn btn-info">Load example</button>
-					<button ng-click="toggleOverlay()" class="btn btn-default">Blank template</button>
-				</div>
+			<div>
+				<button ng-if="template.aspects.length > 0" ng-click="addCommentToAspect(currentAspect)"
+						class="btn btn-success">Add comment
+				</button>
 			</div>
-		</div>
+		</section>
+
+		<button type="submit" class="btn btn-primary">Submit</button>
 	</form>
-
+	<div ng-if="showOverlay">
+		<div class="overlay" ng-click="toggleOverlay()"></div>
+		<div class="overlay-message">
+			<div class="container">
+				<h3>First time user?</h3>
+				<p>If this is your first time using this utility, you can load an example template.</p>
+				<button ng-click="loadExample(); toggleOverlay()" class="btn btn-info">Load example</button>
+				<button ng-click="toggleOverlay()" class="btn btn-default">Blank template</button>
+			</div>
+		</div>
+	</div>
 	<br>
-	<button ng-click="loadExample()">Test</button>
+	<!--<button ng-click="loadExample()">Test</button>-->
 </div>
