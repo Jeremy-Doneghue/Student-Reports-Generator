@@ -1,24 +1,42 @@
 <div>
 	<form>
 		<h3>Paste in a list of your student's names</h3>
-	  <textarea name="textArea" id="textArea"
-				cols="50" rows="10"
-				ng-model="$parent.textAreaContent"
-				placeholder="One name on each line"
-				class="form-control"></textarea>
+	  <textarea
+		  name="textArea"
+		  id="textArea"
+		  cols="50"
+		  rows="10"
+		  ng-model="$parent.textAreaContent"
+		  placeholder="One name on each line"
+		  class="form-control"></textarea>
 		<br>
-		<button ng-click="parseNames()" class="btn btn-primary">Submit</button>
+		<button ng-click="parseNames()"
+				class="btn btn-primary">Submit
+		</button>
 		<h3>Or add them individually</h3>
 		<div ng-repeat="itemToAdd in itemsToAdd">
 			<div class="form-inline">
 				<div class="form-group">
-					<input type="text" class="form-control" id="fName" placeholder="First name"
-						   ng-model="itemToAdd.fName">
+					<input
+						type="text"
+						class="form-control"
+						id="fName"
+						placeholder="First name"
+						ng-model="itemToAdd.fName"
+					>
 
-					<input type="text" class="form-control" id="lName" placeholder="Last name"
-						   ng-model="itemToAdd.lName">
+					<input
+						type="text"
+						class="form-control"
+						id="lName"
+						placeholder="Last name"
+						ng-model="itemToAdd.lName"
+					>
 
-					<button type="submit" class="btn btn-primary" ng-click="add(itemToAdd)">Add</button>
+					<button type="submit"
+							class="btn btn-primary"
+							ng-click="add(itemToAdd)">Add
+					</button>
 				</div>
 			</div>
 		</div>
