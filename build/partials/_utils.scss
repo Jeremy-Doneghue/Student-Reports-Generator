@@ -1,0 +1,14 @@
+.clickable {
+	cursor: pointer;
+}
+/* Template builder text entry*/
+.expanding-textarea {
+	height: auto;
+}
+
+.expanding-textarea:focus {
+	height: 10em;
+	position: absolute;
+	z-index: 1001;
+}
+

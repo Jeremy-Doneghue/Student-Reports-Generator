@@ -11,3 +11,8 @@ This app is currently in pre alpha development and can be considered a prototype
 
 ## Development Environment
 This project uses an [.editorconfig](http://editorconfig.org/) file to ensure that tabs, line endings etc are kept the same across development environments. You can find a plugin for your text editor [here](http://editorconfig.org/#download).
+
+### Styles
+This project now uses the [SCSS](http://sass-lang.com/) preprocessor to create CSS. The current build system is [Gulp](http://gulpjs.com/). 
+You can run `gulp` to compile the source files. 
+There is also a `scss:watch` task that you can run which will compile your changes whenever a scss file is edited. 
