@@ -1,11 +1,14 @@
 # Student reports generator
 
-Generate mail-mergey type reports for a teacher's students using an Angular app.
-This app is currently in pre alpha development and can be considered a prototype.
+[Live demo](https://jeremy-doneghue.github.io/Student-Reports-Generator/)
+
+Student reports generator is a single page web application written in Angular. It is a tool to aid teachers in writing reports for their students. It allows the teacher to create a (detailed or simple) template to generate a report based on aspects of the student’s learning. 
+The system has a high level of customisability which allows the teacher to design responses for all student types and abilities. The teacher then fills in a questionnaire, based on their template, about each student and a report is generated.
+
+## Usage
 
 Most browsers don't like referring to other files when you're just viewing a file. This means that you're probably going to need some sort of web server to use this. I recommend node's http-server. If you have npm installed, just run `npm install --global http-server` and then run `http-server` from within the project directory. 
 
-## Usage
 1. This project uses node 6.9.x to manage dev dependencies. Make sure you have this version of node installed
 2. Run `npm i` to install the dev dependencies and build the css.
 4. Run `npm start` to start the http server.
